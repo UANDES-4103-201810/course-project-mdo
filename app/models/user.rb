@@ -6,6 +6,12 @@ class User < ApplicationRecord
 
   validates :email, format: {with: /\A.+@.+\..+\z/}
   validates :password, length: { minimum: 8 }
-  validates :birth_date, numericality: {less_than: Date.today()}
   validates :name, :security_question, :security_answer, presence: true
+  validate :born_at_least_yesterday
+
+  def born_at_least_yesterday
+    if birth_date.present? && birth_date >= Date.today
+      errors.add(:expiration_date, "can't be born in the future")
+    end
+  end
 end
