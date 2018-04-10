@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  outstanding: false
+  approved: false
+  deleted: false
+  title: MyString
+  description: MyText
+  ammount: 1
+  days_to_go: 1
+  picture: MyString
+  video: MyString
+  descriptive_page: MyText
+  delivery_date: 2018-04-10
+  category: one
+  user: one
+
+two:
+  outstanding: false
+  approved: false
+  deleted: false
+  title: MyString
+  description: MyText
+  ammount: 1
+  days_to_go: 1
+  picture: MyString
+  video: MyString
+  descriptive_page: MyText
+  delivery_date: 2018-04-10
+  category: two
+  user: two

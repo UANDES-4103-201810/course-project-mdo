@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  approved: false
+  promise: one
+  user: one
+
+two:
+  approved: false
+  promise: two
+  user: two

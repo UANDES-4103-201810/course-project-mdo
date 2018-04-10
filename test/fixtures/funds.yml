@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  money: 1
+  approved: false
+  project: one
+  user: one
+
+two:
+  money: 1
+  approved: false
+  project: two
+  user: two
