@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @promise.price %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @promise.description %>
+</p>
+
+<p>
+  <strong>Release date:</strong>
+  <%= @promise.release_date %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @promise.quantity %>
+</p>
+
+<%= link_to 'Edit', edit_promise_path(@promise) %> |
+<%= link_to 'Back', promises_path %>

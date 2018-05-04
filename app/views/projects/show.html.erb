@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-md-6">
+    <h1><%= @project.title %></h1>
+    <p>
+      <%= @project.description %>
+    </p>
+    <p>
+      <strong>Goal Ammount:</strong>
+      <%= @project.ammount %>
+    </p>
+    <p>
+      <strong>Days to go:</strong>
+      <%= @project.days_to_go %>
+    </p>
+    <img src="<%= @project.picture %>" class="img img-responsive"/>
+  </div>
+  <div class="col-md-6">
+    <h2>Promises</h2>
+  </div>
+</div>

@@ -1,10 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <%= link_to 'Users', '/users' %>
-</body>
-</html>
+<h1>Featured Projects</h1>
+<div class="row">
+  <% for p in @projects do %>
+    <div class="col-md-4">
+      <img src="<%= p.picture %>" class="img img-responsive"/>
+      <h2><%= link_to p.title, p %></h2>
+      <p><%= p.description %></p>
+    </div>
+  <% end %>
+</div>

@@ -5,7 +5,6 @@ class CreatePromises < ActiveRecord::Migration[5.1]
       t.text :description
       t.date :release_date
       t.integer :quantity
-      t.references :project, foreign_key: true
 
       t.timestamps
     end

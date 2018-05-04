@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Approved:</strong>
+  <%= @buy.approved %>
+</p>
+
+<p>
+  <strong>Promise:</strong>
+  <%= @buy.promise %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @buy.user %>
+</p>
+
+<%= link_to 'Edit', edit_buy_path(@buy) %> |
+<%= link_to 'Back', buys_path %>

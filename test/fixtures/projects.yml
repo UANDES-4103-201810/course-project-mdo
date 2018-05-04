@@ -11,9 +11,7 @@ one:
   picture: MyString
   video: MyString
   descriptive_page: MyText
-  delivery_date: 2018-04-10
-  category: one
-  user: one
+  delivery_date: 2018-05-04
 
 two:
   outstanding: false
@@ -26,6 +24,4 @@ two:
   picture: MyString
   video: MyString
   descriptive_page: MyText
-  delivery_date: 2018-04-10
-  category: two
-  user: two
+  delivery_date: 2018-05-04

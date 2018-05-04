@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180410190644) do
+ActiveRecord::Schema.define(version: 20180504160555) do
 
   create_table "buys", force: :cascade do |t|
     t.boolean "approved"
@@ -45,18 +45,14 @@ ActiveRecord::Schema.define(version: 20180410190644) do
     t.boolean "deleted"
     t.string "title"
     t.text "description"
-    t.integer "amount"
+    t.integer "ammount"
     t.integer "days_to_go"
     t.string "picture"
     t.string "video"
     t.text "descriptive_page"
     t.date "delivery_date"
-    t.integer "category_id"
-    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["category_id"], name: "index_projects_on_category_id"
-    t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
   create_table "promises", force: :cascade do |t|
@@ -64,16 +60,12 @@ ActiveRecord::Schema.define(version: 20180410190644) do
     t.text "description"
     t.date "release_date"
     t.integer "quantity"
-    t.integer "project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["project_id"], name: "index_promises_on_project_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.boolean "admin"
-    t.string "password"
-    t.string "email"
     t.string "address"
     t.string "name"
     t.string "last_name"
@@ -84,6 +76,18 @@ ActiveRecord::Schema.define(version: 20180410190644) do
     t.datetime "last_login"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
 end
