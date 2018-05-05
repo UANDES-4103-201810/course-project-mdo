@@ -12,6 +12,8 @@ class CreateProjects < ActiveRecord::Migration[5.1]
       t.string :video
       t.text :descriptive_page
       t.date :delivery_date
+      t.integer  :user_id
+      t.integer :category_id
 
       t.timestamps
     end

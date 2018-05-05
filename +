@@ -1,0 +1,131 @@
+Created a sample user and projects through the seeds
+implemented devise
+implemented home view
+implemented projects view
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch master
+# Your branch is up to date with 'origin/master'.
+#
+# Changes to be committed:
+#	new file:   .idea/dataSources.local.xml
+#	new file:   .idea/dataSources.xml
+#	new file:   .idea/dataSources/4c1389fc-2fae-41ac-a0ce-3c58015660e0.xml
+#	new file:   .idea/dataSources/4c1389fc-2fae-41ac-a0ce-3c58015660e0/storage_v2/_src_/schema/main.uQUzAA.meta
+#	modified:   .idea/workspace.xml
+#	modified:   Gemfile
+#	modified:   Gemfile.lock
+#	modified:   app/assets/javascripts/application.js
+#	new file:   app/assets/javascripts/buys.coffee
+#	new file:   app/assets/javascripts/categories.coffee
+#	new file:   app/assets/javascripts/funds.coffee
+#	new file:   app/assets/javascripts/projects.coffee
+#	new file:   app/assets/javascripts/promises.coffee
+#	renamed:    app/assets/stylesheets/application.css -> app/assets/stylesheets/application.css.sass
+#	new file:   app/assets/stylesheets/buys.scss
+#	new file:   app/assets/stylesheets/categories.scss
+#	modified:   app/assets/stylesheets/default.scss
+#	new file:   app/assets/stylesheets/funds.scss
+#	new file:   app/assets/stylesheets/projects.scss
+#	new file:   app/assets/stylesheets/promises.scss
+#	new file:   app/controllers/buys_controller.rb
+#	new file:   app/controllers/categories_controller.rb
+#	modified:   app/controllers/default_controller.rb
+#	new file:   app/controllers/funds_controller.rb
+#	new file:   app/controllers/projects_controller.rb
+#	new file:   app/controllers/promises_controller.rb
+#	modified:   app/helpers/application_helper.rb
+#	new file:   app/helpers/buys_helper.rb
+#	new file:   app/helpers/categories_helper.rb
+#	new file:   app/helpers/funds_helper.rb
+#	new file:   app/helpers/projects_helper.rb
+#	new file:   app/helpers/promises_helper.rb
+#	modified:   app/models/buy.rb
+#	modified:   app/models/category.rb
+#	modified:   app/models/fund.rb
+#	modified:   app/models/project.rb
+#	modified:   app/models/promise.rb
+#	modified:   app/models/user.rb
+#	new file:   app/views/buys/_buy.json.jbuilder
+#	new file:   app/views/buys/_form.html.erb
+#	new file:   app/views/buys/edit.html.erb
+#	new file:   app/views/buys/index.html.erb
+#	new file:   app/views/buys/index.json.jbuilder
+#	new file:   app/views/buys/new.html.erb
+#	new file:   app/views/buys/show.html.erb
+#	new file:   app/views/buys/show.json.jbuilder
+#	new file:   app/views/categories/_category.json.jbuilder
+#	new file:   app/views/categories/_form.html.erb
+#	new file:   app/views/categories/edit.html.erb
+#	new file:   app/views/categories/index.html.erb
+#	new file:   app/views/categories/index.json.jbuilder
+#	new file:   app/views/categories/new.html.erb
+#	new file:   app/views/categories/show.html.erb
+#	new file:   app/views/categories/show.json.jbuilder
+#	modified:   app/views/default/home.html.erb
+#	new file:   app/views/devise/confirmations/new.html.erb
+#	new file:   app/views/devise/mailer/confirmation_instructions.html.erb
+#	new file:   app/views/devise/mailer/email_changed.html.erb
+#	new file:   app/views/devise/mailer/password_change.html.erb
+#	new file:   app/views/devise/mailer/reset_password_instructions.html.erb
+#	new file:   app/views/devise/mailer/unlock_instructions.html.erb
+#	new file:   app/views/devise/passwords/edit.html.erb
+#	new file:   app/views/devise/passwords/new.html.erb
+#	new file:   app/views/devise/registrations/edit.html.erb
+#	new file:   app/views/devise/registrations/new.html.erb
+#	new file:   app/views/devise/sessions/new.html.erb
+#	new file:   app/views/devise/shared/_links.html.erb
+#	new file:   app/views/devise/unlocks/new.html.erb
+#	new file:   app/views/funds/_form.html.erb
+#	new file:   app/views/funds/_fund.json.jbuilder
+#	new file:   app/views/funds/edit.html.erb
+#	new file:   app/views/funds/index.html.erb
+#	new file:   app/views/funds/index.json.jbuilder
+#	new file:   app/views/funds/new.html.erb
+#	new file:   app/views/funds/show.html.erb
+#	new file:   app/views/funds/show.json.jbuilder
+#	modified:   app/views/layouts/application.html.erb
+#	new file:   app/views/projects/_form.html.erb
+#	new file:   app/views/projects/_project.json.jbuilder
+#	new file:   app/views/projects/edit.html.erb
+#	new file:   app/views/projects/index.html.erb
+#	new file:   app/views/projects/index.json.jbuilder
+#	new file:   app/views/projects/new.html.erb
+#	new file:   app/views/projects/show.html.erb
+#	new file:   app/views/projects/show.json.jbuilder
+#	new file:   app/views/promises/_form.html.erb
+#	new file:   app/views/promises/_promise.json.jbuilder
+#	new file:   app/views/promises/edit.html.erb
+#	new file:   app/views/promises/index.html.erb
+#	new file:   app/views/promises/index.json.jbuilder
+#	new file:   app/views/promises/new.html.erb
+#	new file:   app/views/promises/show.html.erb
+#	new file:   app/views/promises/show.json.jbuilder
+#	modified:   config/environments/development.rb
+#	new file:   config/initializers/devise.rb
+#	new file:   config/locales/devise.en.yml
+#	modified:   config/routes.rb
+#	modified:   db/migrate/20180410184309_create_users.rb
+#	new file:   db/migrate/20180502170333_add_devise_to_users.rb
+#	renamed:    db/migrate/20180410184610_create_categories.rb -> db/migrate/20180504160512_create_categories.rb
+#	renamed:    db/migrate/20180410184714_create_promises.rb -> db/migrate/20180504160523_create_promises.rb
+#	renamed:    db/migrate/20180410185326_create_projects.rb -> db/migrate/20180504160539_create_projects.rb
+#	renamed:    db/migrate/20180410190644_create_buys.rb -> db/migrate/20180504160547_create_buys.rb
+#	renamed:    db/migrate/20180410185705_create_funds.rb -> db/migrate/20180504160555_create_funds.rb
+#	modified:   db/schema.rb
+#	modified:   db/seeds.rb
+#	new file:   test/controllers/buys_controller_test.rb
+#	new file:   test/controllers/categories_controller_test.rb
+#	new file:   test/controllers/funds_controller_test.rb
+#	new file:   test/controllers/projects_controller_test.rb
+#	new file:   test/controllers/promises_controller_test.rb
+#	modified:   test/fixtures/projects.yml
+#	modified:   test/fixtures/promises.yml
+#	new file:   test/models/fund_test.rb
+#	new file:   test/system/buys_test.rb
+#	new file:   test/system/categories_test.rb
+#	new file:   test/system/funds_test.rb
+#	new file:   test/system/projects_test.rb
+#	new file:   test/system/promises_test.rb
+#

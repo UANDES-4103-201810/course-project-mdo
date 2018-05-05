@@ -1,59 +1,38 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Admin:</strong>
-  <%= @user.admin %>
-</p>
-
-<p>
-  <strong>Password:</strong>
-  <%= @user.password %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @user.address %>
-</p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
-
-<p>
-  <strong>Last name:</strong>
-  <%= @user.last_name %>
-</p>
-
-<p>
-  <strong>Image:</strong>
-  <%= @user.image %>
-</p>
-
-<p>
-  <strong>Birth date:</strong>
-  <%= @user.birth_date %>
-</p>
-
-<p>
-  <strong>Security question:</strong>
-  <%= @user.security_question %>
-</p>
-
-<p>
-  <strong>Security answer:</strong>
-  <%= @user.security_answer %>
-</p>
-
-<p>
-  <strong>Last login:</strong>
-  <%= @user.last_login %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<h1><%= @user.email %></h1>
+<div class="row">
+  <div class="col-md-5">
+    <p>
+      <strong>Name:</strong>
+      <%= @user.name %>
+    </p>
+    <p>
+      <strong>Last Name:</strong>
+      <%= @user.last_name %>
+    </p>
+    <p>
+      <strong>Birth date:</strong>
+      <%= @user.birth_date %>
+    </p>
+    <p>
+      <strong>Address:</strong>
+      <%= @user.address %>
+    </p>
+    <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-default" %>
+  </div>
+  <div class="col-md-5">
+    <h2>My Projects</h2>
+      <% for p in @projects do %>
+        <h3><%= link_to p.title, p %></h3>
+      <% end %>
+    <h2>My Wishlist</h2>
+  </div>
+  <div class="col-md-2 text-center">
+    <img class="img img-responsive img-circle" src="<%= @user.image %>"/>
+    <br/>
+    <div class="btn-group-vertical">
+      <button class="btn btn-default">Wishlist</button>
+      <button class="btn btn-default">Projects</button>
+      <button class="btn btn-default">Funded Projects</button>
+    </div>
+  </div>
+</div>

@@ -6,6 +6,8 @@ class CreatePromises < ActiveRecord::Migration[5.1]
       t.date :release_date
       t.integer :quantity
 
+      t.integer :project_id
+
       t.timestamps
     end
   end

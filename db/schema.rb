@@ -51,6 +51,8 @@ ActiveRecord::Schema.define(version: 20180504160555) do
     t.string "video"
     t.text "descriptive_page"
     t.date "delivery_date"
+    t.integer "user_id"
+    t.integer "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -60,6 +62,7 @@ ActiveRecord::Schema.define(version: 20180504160555) do
     t.text "description"
     t.date "release_date"
     t.integer "quantity"
+    t.integer "project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

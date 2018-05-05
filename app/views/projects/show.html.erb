@@ -15,6 +15,29 @@
     <img src="<%= @project.picture %>" class="img img-responsive"/>
   </div>
   <div class="col-md-6">
-    <h2>Promises</h2>
+    <h2>Funding</h2>
+    <br/>
+    <h3>Donate Custom Amount</h3>
+    <form class="form form-inline">
+      <input type="number" class="form-control" value="1">
+      <button class="btn btn-success" value="submit">Donate</button>
+    </form>
+    <h3>Promises</h3>
+    <% for p in @promises do %>
+      <div class="row">
+        <div class="col-md-6">
+          <p><%= p.description %></p>
+        </div>
+        <div class="col-md-2">
+          <p><%= p.price %></p>
+        </div>
+        <div class="col-md-2">
+          <p><%= p.release_date %></p>
+        </div>
+        <div class="col-md-2">
+          <button class="btn btn-success">Fund</button>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>

@@ -1,47 +1,10 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Projects</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Outstanding</th>
-      <th>Approved</th>
-      <th>Deleted</th>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Ammount</th>
-      <th>Days to go</th>
-      <th>Picture</th>
-      <th>Video</th>
-      <th>Descriptive page</th>
-      <th>Delivery date</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @projects.each do |project| %>
-      <tr>
-        <td><%= project.outstanding %></td>
-        <td><%= project.approved %></td>
-        <td><%= project.deleted %></td>
-        <td><%= project.title %></td>
-        <td><%= project.description %></td>
-        <td><%= project.ammount %></td>
-        <td><%= project.days_to_go %></td>
-        <td><%= project.picture %></td>
-        <td><%= project.video %></td>
-        <td><%= project.descriptive_page %></td>
-        <td><%= project.delivery_date %></td>
-        <td><%= link_to 'Show', project %></td>
-        <td><%= link_to 'Edit', edit_project_path(project) %></td>
-        <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Project', new_project_path %>
+<div class="row">
+  <% for p in @projects do %>
+    <div class="col-md-4">
+      <img src="<%= p.picture %>" class="img img-responsive"/>
+      <h2><%= link_to p.title, p %></h2>
+    </div>
+  <% end %>
+</div>
