@@ -3,7 +3,7 @@
 <div class="row">
   <% for p in @projects do %>
     <div class="col-md-4">
-      <img src="<%= p.picture %>" class="img img-responsive"/>
+      <%= image_tag p.picture.attached? ? p.picture : "", class: "img img-responsive" %>
       <h2><%= link_to p.title, p %></h2>
     </div>
   <% end %>

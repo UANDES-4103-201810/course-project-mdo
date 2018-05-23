@@ -19,6 +19,14 @@
       <%= @user.address %>
     </p>
     <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-default" %>
+
+    <br/>
+    <br/>
+    <div class="btn-group-vertical">
+      <button class="btn btn-default">Wishlist</button>
+      <button class="btn btn-default">Projects</button>
+      <button class="btn btn-default">Funded Projects</button>
+    </div>
   </div>
   <div class="col-md-4">
     <h2>My Projects</h2>
@@ -28,12 +36,6 @@
     <h2>My Wishlist</h2>
   </div>
   <div class="col-md-4 text-center">
-    <%= image_tag @user.image, class: "img img-responsive img-circle" %>
-    <br/>
-    <div class="btn-group-vertical">
-      <button class="btn btn-default">Wishlist</button>
-      <button class="btn btn-default">Projects</button>
-      <button class="btn btn-default">Funded Projects</button>
-    </div>
+    <%= image_tag @user.image.attached? ? @user.image : "", class: "img img-responsive img-circle" %>
   </div>
 </div>
