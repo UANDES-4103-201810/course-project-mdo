@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_and_belongs_to_many :projects
   has_many :promises, :through => :buys
 
+  has_one_attached :image
+
   validates :email, format: {with: /\A.+@.+\..+\z/}
   validates :encrypted_password, length: { minimum: 8 }
   #validates :name, :security_question, :security_answer, presence: true

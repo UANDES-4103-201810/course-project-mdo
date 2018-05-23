@@ -13,7 +13,6 @@ user.name = "Aaaaa"
 user.last_name = "Bbbbb Ccccc"
 user.address = "Calle Falsa 123"
 user.birth_date = "1992-05-03"
-user.image = "https://courses.adpc.net/assets/courseware/3c02425a1d743f435641c03b42f26caf/asset-v1:SERVIR-Mekong+SM-001+2016_T1+type@asset+block/user_profile_male.jpg"
 user.save
 
 category = Category.new
