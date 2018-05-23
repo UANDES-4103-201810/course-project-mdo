@@ -16,7 +16,6 @@ class ProjectsController < ApplicationController
     else
       @user_id = nil
     end
-
     @disabled = !user_signed_in? ? "disabled" : ""
 
   end
