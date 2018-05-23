@@ -1,18 +1,30 @@
 <div class="row">
   <div class="col-md-6">
     <h1><%= @project.title %></h1>
+    <%= image_tag @project.picture.attached? ? @project.picture : "", class: "img img-responsive" %>
+    <br/>
     <p>
       <%= @project.description %>
     </p>
-    <p>
-      <strong>Goal Ammount:</strong>
-      <%= @project.ammount %>
-    </p>
-    <p>
-      <strong>Days to go:</strong>
-      <%= @project.days_to_go %>
-    </p>
-    <%= image_tag @project.picture.attached? ? @project.picture : "", class: "img img-responsive" %>
+    <div class="row">
+      <div class="col-md-8">
+        <p>
+          <strong>Funded so far:</strong>
+          0
+        </p>
+        <p>
+          <strong>Goal Ammount:</strong>
+          <%= @project.ammount %>
+        </p>
+        <p>
+          <strong>Days to go:</strong>
+          <%= @project.days_to_go %>
+        </p>
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-info" id="wishlist_button" onclick="clickWishlist();" value="<%= @info[:wishlist] %>" <%= @info[:disabled] %>>Add to Wishlist</button>
+      </div>
+    </div>
   </div>
   <div class="col-md-6">
     <h2>Funding</h2>
@@ -20,10 +32,10 @@
     <h3>Donate Custom Amount</h3>
     <div class="form form-inline">
       <input type="number" id="donation_input" class="form-control">
-      <button class="btn btn-success" id="donation_button" onclick="clickDonate();" value="<%= @user_id %>" <%= @disabled %>>Donate</button>
+      <button class="btn btn-success" id="donation_button" onclick="clickDonate();" <%= @info[:disabled] %>>Donate</button>
     </div>
     <h3>Promises</h3>
-    <% for p in @promises do %>
+    <% for p in @info[:promises] do %>
       <div class="row">
         <div class="col-md-6">
           <p><%= p.description %></p>
@@ -35,10 +47,24 @@
           <p><%= p.release_date %></p>
         </div>
         <div class="col-md-2">
-          <button class="btn btn-success" <%= @disabled %> >Fund</button>
+          <button class="btn btn-success" <%= @info[:disabled] %> >Fund</button>
         </div>
       </div>
     <% end %>
   </div>
 </div>
 <input type="hidden" id="project_id" value="<%= @project.id %>">
+<input type="hidden" id="user_id" value="<%= @info[:user_id] %>">
+
+<script type="application/javascript">
+    $(document).ready(function () {
+        let wishlist_button = document.getElementById("wishlist_button");
+        let wishlist_id = wishlist_button.value;
+
+        if (wishlist_id === "none") {
+            modifyWishlistButton(wishlist_id, wishlist_button, 'btn btn-info', 'Add to Wishlist');
+        } else {
+            modifyWishlistButton(wishlist_id, wishlist_button, 'btn btn-danger', 'Remove from Wishlist');
+        }
+    });
+</script>
