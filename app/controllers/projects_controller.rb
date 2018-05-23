@@ -11,6 +11,14 @@ class ProjectsController < ApplicationController
   # GET /projects/1.json
   def show
     @promises = Promise.where(:project_id => params[:id])
+    if user_signed_in?
+      @user_id = current_user.id
+    else
+      @user_id = nil
+    end
+
+    @disabled = !user_signed_in? ? "disabled" : ""
+
   end
 
   # GET /projects/new

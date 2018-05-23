@@ -18,10 +18,10 @@
     <h2>Funding</h2>
     <br/>
     <h3>Donate Custom Amount</h3>
-    <form class="form form-inline">
-      <input type="number" class="form-control" value="1">
-      <button class="btn btn-success" value="submit">Donate</button>
-    </form>
+    <div class="form form-inline">
+      <input type="number" id="donation_input" class="form-control">
+      <button class="btn btn-success" id="donation_button" onclick="clickDonate();" value="<%= @user_id %>" <%= @disabled %>>Donate</button>
+    </div>
     <h3>Promises</h3>
     <% for p in @promises do %>
       <div class="row">
@@ -35,9 +35,10 @@
           <p><%= p.release_date %></p>
         </div>
         <div class="col-md-2">
-          <button class="btn btn-success">Fund</button>
+          <button class="btn btn-success" <%= @disabled %> >Fund</button>
         </div>
       </div>
     <% end %>
   </div>
 </div>
+<input type="hidden" id="project_id" value="<%= @project.id %>">
