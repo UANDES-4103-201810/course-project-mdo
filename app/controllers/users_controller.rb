@@ -10,7 +10,10 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @projects = Project.where(:user_id => params[:id])
+    @info = {
+        wishlist: current_user.my_wishlist,
+        projects: Project.where(:user_id => params[:id])
+    }
   end
 
   # GET /users/new

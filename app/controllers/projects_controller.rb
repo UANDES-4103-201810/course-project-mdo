@@ -10,13 +10,17 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
-    @promises = Promise.where(:project_id => params[:id])
+    @info = {
+        promises: Promise.where(:project_id => params[:id]),
+        user_id: nil,
+        disabled: "disabled",
+        wishlist: current_user.in_wishlist(params[:id])
+    }
+
     if user_signed_in?
-      @user_id = current_user.id
-    else
-      @user_id = nil
+      @info[:user_id] = current_user.id
+      @info[:disabled] = ""
     end
-    @disabled = !user_signed_in? ? "disabled" : ""
 
   end
 
