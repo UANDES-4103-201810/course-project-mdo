@@ -11,70 +11,52 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :outstanding %>
-    <%= form.check_box :outstanding, id: :project_outstanding %>
-  </div>
-
-  <div class="field">
-    <%= form.label :approved %>
-    <%= form.check_box :approved, id: :project_approved %>
-  </div>
-
-  <div class="field">
-    <%= form.label :deleted %>
-    <%= form.check_box :deleted, id: :project_deleted %>
-  </div>
-
-  <div class="field">
+  <div class="form-group">
     <%= form.label :title %>
-    <%= form.text_field :title, id: :project_title %>
+    <%= form.text_field :title, id: :project_title, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :description %>
-    <%= form.text_area :description, id: :project_description %>
+    <%= form.text_area :description, id: :project_description, class: "form-control" %>
   </div>
 
-  <div class="field"> Category
-    <select>
-      <% for c in @categories do %>
-        <option><%= c.name %></option>
-      <% end %>
-    </select>
+  <div class="form-group">
+    <%= form.label :category %>
+    <%= form.collection_select :category_id, Category.all, :id, :name, prompt: true, class: "form-control", id: :project_category_id %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :ammount %>
-    <%= form.number_field :ammount, id: :project_ammount %>
+    <%= form.number_field :ammount, id: :project_ammount, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :days_to_go %>
-    <%= form.number_field :days_to_go, id: :project_days_to_go %>
+    <%= form.number_field :days_to_go, id: :project_days_to_go, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :picture %>
     <%= form.file_field :picture, id: :project_picture, direct_upload: true %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :video %>
-    <%= form.text_field :video, id: :project_video %>
+    <%= form.text_field :video, id: :project_video, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :descriptive_page %>
-    <%= form.text_area :descriptive_page, id: :project_descriptive_page %>
+    <%= form.text_area :descriptive_page, id: :project_descriptive_page, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :delivery_date %>
-    <%= form.date_select :delivery_date, id: :project_delivery_date %>
+    <%= form.date_select :delivery_date, id: :project_delivery_date, class: "form-control" %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Create", class: "btn btn-success" %>
   </div>
 <% end %>

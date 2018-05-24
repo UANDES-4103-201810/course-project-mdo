@@ -45,7 +45,8 @@ end
 
 
 categories_list = [
-    "default Category"
+    "Default Category",
+    "Another Category"
 ]
 
 categories = []

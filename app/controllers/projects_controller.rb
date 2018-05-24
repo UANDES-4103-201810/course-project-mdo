@@ -28,7 +28,6 @@ class ProjectsController < ApplicationController
   # GET /projects/new
   def new
     @project = Project.new
-    @categories = Category.all
   end
 
   # GET /projects/1/edit
@@ -39,7 +38,9 @@ class ProjectsController < ApplicationController
   # POST /projects.json
   def create
 
-    @project = Project.new(project_params)
+    @project = Project.new(project_params.merge(:user_id => current_user.id))
+
+    puts project_params
 
     respond_to do |format|
       if @project.save
@@ -84,6 +85,6 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:outstanding, :approved, :deleted, :title, :description, :ammount, :days_to_go, :picture, :video, :descriptive_page, :delivery_date)
+      params.require(:project).permit(:outstanding, :approved, :deleted, :title, :description, :ammount, :days_to_go, :picture, :video, :descriptive_page, :delivery_date, :category_id)
     end
 end

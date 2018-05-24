@@ -11,57 +11,57 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :admin %>
-    <%= form.check_box :admin, id: :user_admin %>
+    <%= form.check_box :admin, id: :user_admin, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :password %>
-    <%= form.text_field :password, id: :user_password %>
+    <%= form.text_field :password, id: :user_password, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :email %>
-    <%= form.text_field :email, id: :user_email %>
+    <%= form.text_field :email, id: :user_email, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :address %>
-    <%= form.text_field :address, id: :user_address %>
+    <%= form.text_field :address, id: :user_address, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :name %>
-    <%= form.text_field :name, id: :user_name %>
+    <%= form.text_field :name, id: :user_name, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :last_name %>
-    <%= form.text_field :last_name, id: :user_last_name %>
+    <%= form.text_field :last_name, id: :user_last_name, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :image %>
-    <%= form.file_field :image, id: :user_image, direct_upload: true %>
+    <%= form.file_field :image, id: :user_image, direct_upload: true, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :birth_date %>
-    <%= form.date_select :birth_date, id: :user_birth_date %>
+    <%= form.date_select :birth_date, id: :user_birth_date, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :security_question %>
-    <%= form.text_field :security_question, id: :user_security_question %>
+    <%= form.text_field :security_question, id: :user_security_question, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :security_answer %>
-    <%= form.text_field :security_answer, id: :user_security_answer %>
+    <%= form.text_field :security_answer, id: :user_security_answer, class: "form-control" %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Create", class: "btn btn-success" %>
   </div>
 <% end %>
