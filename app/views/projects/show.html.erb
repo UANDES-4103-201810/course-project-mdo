@@ -8,9 +8,9 @@
     </p>
     <div class="row">
       <div class="col-md-8">
-        <p>
+        <p id="funded_amount">
           <strong>Funded so far:</strong>
-          0
+          <%= @project.funded_amount %>
         </p>
         <p>
           <strong>Goal Ammount:</strong>
@@ -31,7 +31,7 @@
     <br/>
     <h3>Donate Custom Amount</h3>
     <div class="form form-inline">
-      <input type="number" id="donation_input" class="form-control">
+      <input type="number" id="donation_input" class="form-control" value="1" min="1">
       <button class="btn btn-success" id="donation_button" onclick="clickDonate();" <%= @info[:disabled] %>>Donate</button>
     </div>
     <h3>Promises</h3>
@@ -47,7 +47,7 @@
           <p><%= p.release_date %></p>
         </div>
         <div class="col-md-2">
-          <button class="btn btn-success" <%= @info[:disabled] %> >Fund</button>
+          <button class="btn btn-success" onclick="buyPromise(<%=p.id%>);" <%= @info[:disabled] %> >Fund</button>
         </div>
       </div>
     <% end %>

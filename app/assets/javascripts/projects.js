@@ -19,7 +19,11 @@ function clickDonate() {
                 authenticity_token: window._token
             }
         },
-        dataType: "json"
+        dataType: "json",
+        success: function(){
+            sendNotice("Donation successful");
+            getFundedAmount(project_id);
+        }
     });
 }
 
@@ -56,6 +60,7 @@ function addToWishlist(user_id, project_id, wishlist_button) {
             let $response=$(data);
             let wishlist_id = $response[0].id;
             modifyWishlistButton(wishlist_id, wishlist_button, 'btn btn-danger', 'Remove from Wishlist');
+            sendNotice("Added to wishlist");
         }
     });
 }
@@ -66,8 +71,9 @@ function removeFromWishlist(wishlist_id) {
         url: "/wishlists/"+wishlist_id.toString()+".json",
         dataType: "json",
         data: {"_method":"delete"},
-        success: function(data){
+        success: function(){
             modifyWishlistButton("none", wishlist_button, 'btn btn-info', 'Add to Wishlist');
+            sendNotice("Removed from wishlist");
         }
     });
 }
@@ -78,3 +84,46 @@ function modifyWishlistButton(wishlist_id, wishlist_button, class_type, text) {
     wishlist_button.innerHTML = text;
 }
 
+function buyPromise(promise_id) {
+    let user_input = document.getElementById("user_id");
+    let project_input = document.getElementById("project_id");
+
+    let user_id = user_input.value;
+    let project_id = project_input.value;
+
+
+    $.ajax({
+        type: "POST",
+        url: "/buys.json",
+        data: {
+            buy: {
+                approved: true,
+                user_id: user_id,
+                promise_id: promise_id,
+                authenticity_token: window._token
+            }
+        },
+        dataType: "json",
+        success: function(){
+            sendNotice("Promise purchased successfully");
+            getFundedAmount(project_id);
+        }
+    });
+}
+
+function getFundedAmount(project_id) {
+    $.ajax({
+        type: "GET",
+        url: "/projects/"+project_id.toString()+".json",
+        success: function(data){
+            let $response=$(data);
+            let amount = $response[0].picture.record.funded_amount;
+            setFundedAmount(amount.toString());
+        }
+    });
+}
+
+function setFundedAmount(amount) {
+    let amount_text = document.getElementById("funded_amount");
+    amount_text.innerHTML = "<strong>Funded so far:</strong> " + amount;
+}
