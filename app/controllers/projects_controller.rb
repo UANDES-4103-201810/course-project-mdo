@@ -5,6 +5,7 @@ class ProjectsController < ApplicationController
   # GET /projects.json
   def index
     @projects = Project.all
+    @categories = Category.all
   end
 
   # GET /projects/1
@@ -27,6 +28,7 @@ class ProjectsController < ApplicationController
   # GET /projects/new
   def new
     @project = Project.new
+    @categories = Category.all
   end
 
   # GET /projects/1/edit
@@ -36,6 +38,7 @@ class ProjectsController < ApplicationController
   # POST /projects
   # POST /projects.json
   def create
+
     @project = Project.new(project_params)
 
     respond_to do |format|
