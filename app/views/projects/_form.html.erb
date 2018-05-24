@@ -36,6 +36,14 @@
     <%= form.text_area :description, id: :project_description %>
   </div>
 
+  <div class="field"> Category
+    <select>
+      <% for c in @categories do %>
+        <option><%= c.name %></option>
+      <% end %>
+    </select>
+  </div>
+
   <div class="field">
     <%= form.label :ammount %>
     <%= form.number_field :ammount, id: :project_ammount %>
