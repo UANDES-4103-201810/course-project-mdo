@@ -1,25 +1,26 @@
 <h1>Projects</h1>
-<select>
-  <% for c in @categories do %>
-    <option><%= c.name %></option>
-  <% end %>
-</select>
+<div class="row">
+  <div class="col-md-8">
+    <%= select_tag "Categories", options_from_collection_for_select(@categories, "id", "name"), include_blank: "All", class: "form-control" %>
+  </div>
+  <div class="col-md-4">
+    <% if user_signed_in? %>
+      <%= link_to new_project_path do %>
+        <button class="btn btn-success pull-right" id="add_project" value="<%= @user_id %>">Add new project</button>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+<br/>
 
 <div class="row">
-  <div class="col-md-10">
+  <div class="col-md-12">
   <% for p in @projects do %>
     <div class="col-md-4">
       <%= image_tag p.picture.attached? ? p.picture : "", class: "img img-responsive" %>
       <h2><%= link_to p.title, p %></h2>
     </div>
   <% end %>
-  </div>
-  <div class="col-md-2">
-      <% if user_signed_in? %>
-        <%= link_to new_project_path do %>
-          <button class="btn btn-default" id="add_project" value="<%= @user_id %>">Add new project</button>
-        <% end %>
-      <% end %>
   </div>
 </div>
 
