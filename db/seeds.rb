@@ -73,6 +73,76 @@ projects_list = [
         Rails.root+"db/seed_files/project.png",
         "project.png"
     ],
+    [
+        true,
+        true,
+        false,
+        "Project 2",
+        "This is teh description for project 2",
+        3333,
+        40,
+        "2020-09-09",
+        categories[1],
+        users[0],
+        Rails.root+"db/seed_files/project.png",
+        "project.png"
+    ],
+    [
+        true,
+        true,
+        false,
+        "Project 3",
+        "This is the best project ever. This is the best project ever. This is the best project ever. This is the best project ever. This is the best project ever. This is the best project ever.",
+        5920195,
+        6,
+        "2021-01-01",
+        categories[0],
+        users[0],
+        Rails.root+"db/seed_files/project.png",
+        "project.png"
+    ],
+    [
+        true,
+        true,
+        false,
+        "Project 4",
+        "This is the best project ever. Lalalallalalallalalallalalalal. This is the best project ever. This is the best project ever. This is the best project ever.",
+        5920195,
+        6,
+        "2018-11-30",
+        categories[0],
+        users[0],
+        Rails.root+"db/seed_files/project.png",
+        "project.png"
+    ],
+    [
+        true,
+        true,
+        false,
+        "Project 5",
+        "This is the second best project ever. Lalalallalala punchin punchin lalalalal.",
+        5920195,
+        6,
+        "2018-11-01",
+        categories[0],
+        users[0],
+        Rails.root+"db/seed_files/project.png",
+        "project.png"
+    ],
+    [
+        true,
+        false,
+        false,
+        "Project 6",
+        "Punchin punchin punchin Asaaaaaaaadoooooooo.",
+        5920195,
+        6,
+        "2023-11-02",
+        categories[0],
+        users[0],
+        Rails.root+"db/seed_files/project.png",
+        "project.png"
+    ]
 ]
 
 projects = []
