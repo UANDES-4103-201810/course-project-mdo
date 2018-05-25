@@ -34,51 +34,43 @@ function clickOutstanding() {
     let project_id = project_input.value;
     let outstanding_value = outstanding_button.value;
 
+    setOutstandingValue(project_id, outstanding_value, outstanding_button);
+}
+
+function setOutstandingValue(project_id, outstanding_value, outstanding_button) {
+    let button_class;
+    let button_text;
+
     if (outstanding_value === "true"){
-        markAsOutstanding(project_id, outstanding_value, outstanding_button);
+        button_class = "btn btn-danger";
+        button_text = "Remove from Outstanding Projects";
     } else {
-        unmarkAsOutstanding(project_id, outstanding_value, outstanding_button);
+        button_class = "btn btn-success";
+        button_text = "Mark as outstanding";
     }
 
-}
-function markAsOutstanding(project_id, outstanding_value, outstanding_button) {
     $.ajax({
-        type: "POST",
-        url: "/projects/1.json",
-        data: {"_method":"update",
-            project: {
+        type: "PATCH",
+        dataType: "json",
+        url: '/projects/'+project_id.toString()+'.json',
+        contentType: 'application/json',
+        data: JSON.stringify({
+            "project": {
                 outstanding: outstanding_value,
                 authenticity_token: window._token
             }
-        },
-        dataType: "json",
-        success: function(data){
-            let $response=$(data);
-            let outstanding_value = $response[0].id;
-            modifyOutstandigButton(outstanding_value, outstanding_button, 'btn btn-danger', 'Mark as Outstanding');
-            sendNotice("Change saved");
-        }
-    });
-}
-function unmarkAsOutstanding(project_id, outstanding_value, outstanding_button) {
-    $.ajax({
-        type: "POST",
-        url: "/projects/1.json",
-        dataType: "json",
-        data: {"_method":"update",
-            project: {
-                outstanding: outstanding_value,
-                authenticity_token: window._token
-            }},
+        }),
         success: function(){
-            modifyOutstandigButton(outstanding_value, outstanding_button, 'btn btn-danger', 'Unmark as Outstanding');
+            modifyOutstandigButton(outstanding_value, outstanding_button, button_class, button_text);
             sendNotice("Change saved");
         }
     });
 }
 
 function modifyOutstandigButton(outstanding_value, outstanding_button, class_type, text) {
-    outstanding_button.value = outstanding_value;
+    let value = "true";
+    if (outstanding_value === "true") value = "false";
+    outstanding_button.value = value;
     outstanding_button.setAttribute('class', class_type);
     outstanding_button.innerHTML = text;
 }
