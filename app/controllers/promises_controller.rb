@@ -10,6 +10,16 @@ class PromisesController < ApplicationController
   # GET /promises/1
   # GET /promises/1.json
   def show
+    @info = {
+        project_id: Project.where(:id => params[:project_id]),
+        user_id: nil,
+        disabled: "disabled",
+    }
+
+    if user_signed_in?
+      @info[:user_id] = current_user.id
+      @info[:disabled] = ""
+    end
   end
 
   # GET /promises/new
@@ -25,7 +35,6 @@ class PromisesController < ApplicationController
   # POST /promises.json
   def create
     @promise = Promise.new(promise_params)
-
     respond_to do |format|
       if @promise.save
         format.html { redirect_to @promise, notice: 'Promise was successfully created.' }

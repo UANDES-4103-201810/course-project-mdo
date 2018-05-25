@@ -1,12 +1,12 @@
 <h1>Projects</h1>
 <div class="row">
   <div class="col-md-8">
-    <%= select_tag "Categories", options_from_collection_for_select(@categories, "id", "name"), include_blank: "All", class: "form-control" %>
+    <%= select_tag "selected_category", options_from_collection_for_select(Category.all, "id", "name"), include_blank: "All", class: "form-control", onchange: "categoryFilter();" %>
   </div>
   <div class="col-md-4">
     <% if user_signed_in? %>
       <%= link_to new_project_path do %>
-        <button class="btn btn-success pull-right" id="add_project" value="<%= @user_id %>">Add new project</button>
+        <button class="btn btn-success pull-right" id="add_project" value="<%= current_user.id %>">Add new project</button>
       <% end %>
     <% end %>
   </div>
@@ -14,14 +14,12 @@
 <br/>
 
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-12" id="projects_container">
   <% for p in @projects do %>
-    <div class="col-md-4">
-      <%= image_tag p.picture.attached? ? p.picture : "", class: "img img-responsive" %>
-      <h2><%= link_to p.title, p %></h2>
-    </div>
+      <div class="col-md-3" id="<%= p.category.id %>">
+        <%= image_tag p.picture.attached? ? p.picture : "", class: "img img-responsive" %>
+        <h2><%= link_to p.title, p %></h2>
+      </div>
   <% end %>
   </div>
 </div>
-
-

@@ -34,7 +34,13 @@
       <input type="number" id="donation_input" class="form-control" value="1" min="1">
       <button class="btn btn-success" id="donation_button" onclick="clickDonate();" <%= @info[:disabled] %>>Donate</button>
     </div>
-    <h3>Promises</h3>
+    <h3>Promises
+      <%= link_to new_promise_path do %>
+        <button class="btn btn-success" id="add_promise" %>" Add new promise</button>
+      <% end %>
+    </h3>
+
+
     <% for p in @info[:promises] do %>
       <div class="row">
         <div class="col-md-6">

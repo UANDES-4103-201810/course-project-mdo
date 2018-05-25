@@ -20,11 +20,28 @@ class Project < ApplicationRecord
     donations + promises
   end
 
+  def image_url
+    if self.picture.attached?
+      Rails.application.routes.url_helpers.url_for(self.picture)
+    else
+      ""
+    end
+  end
+
   def as_json(options = { })
     # just in case someone says as_json(nil) and bypasses
     # our default...
     super((options || { }).merge({
-         :methods => [:funded_amount]
+         :methods => [:funded_amount, :image_url]
      }))
   end
+
+  def self.by_category(category_id)
+    if category_id.present?
+      Project.where(:category_id => category_id)
+    else
+      Project.all
+    end
+  end
 end
+

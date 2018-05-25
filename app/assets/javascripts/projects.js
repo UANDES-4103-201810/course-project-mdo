@@ -127,3 +127,29 @@ function setFundedAmount(amount) {
     let amount_text = document.getElementById("funded_amount");
     amount_text.innerHTML = "<strong>Funded so far:</strong> " + amount;
 }
+
+function categoryFilter() {
+    let category_select = document.getElementById("selected_category");
+    let selected_category_index = category_select.selectedIndex;
+    let category_id = category_select.options[selected_category_index].value;
+
+    $.ajax({
+        type: "GET",
+        url: "/projects.json?category="+category_id.toString(),
+        success: function(data){
+            let $response=$(data);
+            updateShownProjects($response)
+        }
+    });
+}
+
+function updateShownProjects(projects){
+    let projects_container = document.getElementById("projects_container");
+    projects_container.innerHTML = "";
+    for (let i=0; i<projects.length; i++){
+        let project_id = projects[i].id.toString();
+        let project_title = projects[i].title.toString();
+        let project_picture = projects[i].picture.record.image_url.toString();
+        projects_container.innerHTML += '<div class="col-md-3"><img class="img img-responsive" src="'+project_picture+'"><h2><a href="/projects/'+project_id+'">'+project_title+'</a></h2></div>';
+    }
+}
