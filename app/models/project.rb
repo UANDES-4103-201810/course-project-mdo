@@ -1,6 +1,6 @@
 class Project < ApplicationRecord
   belongs_to :category
-  belongs_to :user, optional: true
+  belongs_to :user
   has_many :promises
   has_many :users, :through => :funds
   has_many :users, :through => :wishlists

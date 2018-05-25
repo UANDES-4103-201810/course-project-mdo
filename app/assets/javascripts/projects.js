@@ -30,14 +30,16 @@ function clickDonate() {
 function clickOutstanding() {
     let project_input = document.getElementById("project_id");
     let outstanding_button = document.getElementById("outstanding_button");
+    let user_input = document.getElementById("user_id");
 
+    let user_id = user_input.value;
     let project_id = project_input.value;
     let outstanding_value = outstanding_button.value;
 
-    setOutstandingValue(project_id, outstanding_value, outstanding_button);
+    setOutstandingValue(project_id, outstanding_value, outstanding_button, user_id);
 }
 
-function setOutstandingValue(project_id, outstanding_value, outstanding_button) {
+function setOutstandingValue(project_id, outstanding_value, outstanding_button, user_id) {
     let button_class;
     let button_text;
 
@@ -57,6 +59,7 @@ function setOutstandingValue(project_id, outstanding_value, outstanding_button) 
         data: JSON.stringify({
             "project": {
                 outstanding: outstanding_value,
+                user_id: user_id,
                 authenticity_token: window._token
             }
         }),
