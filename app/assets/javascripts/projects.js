@@ -132,3 +132,5 @@ function categoryFilter() {
     var id_category_selected = document.getElementById("selected_category")
 
 }
+
+

@@ -1,7 +1,7 @@
 <h1>Projects</h1>
 <select name="category_names">
   <% for c in @categories do %>
-    <option id="selected_category", onclick="categoryFilter();", value = "<%= c.id %>"> <%= c.name %></option>
+    <option id="selected_category", onclick="categoryFilter();<%= c.id %>"> <%= c.name %></option>
   <% end %>
 </select>
 

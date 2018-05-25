@@ -10,11 +10,14 @@
       </ul>
     </div>
   <% end %>
-
+  <% if user_signed_in? %>
+    <% if current_user.admin %>
   <div class="form-group">
     <%= form.label :admin %>
     <%= form.check_box :admin, id: :user_admin, class: "form-control" %>
   </div>
+    <% end %>
+  <% end %>
 
   <div class="form-group">
     <%= form.label :password %>

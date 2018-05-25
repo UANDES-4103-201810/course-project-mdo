@@ -1,6 +1,9 @@
 <div class="row">
   <div class="col-md-6">
     <h1><%= @project.title %></h1>
+    <% if current_user.admin %>
+      Outstanding Project <input type="checkbox" id="outstanding" onclick="setOutstandingProject(<%=project.id%>)">
+    <% end %>
     <%= image_tag @project.picture.attached? ? @project.picture : "", class: "img img-responsive" %>
     <br/>
     <p>
@@ -36,7 +39,7 @@
     </div>
     <h3>Promises
       <%= link_to new_promise_path do %>
-        <button class="btn btn-success" id="add_promise" %>" Add new promise</button>
+        <button class="btn btn-success" id="add_promise" %>Add new promise</button>
       <% end %>
     </h3>
 
