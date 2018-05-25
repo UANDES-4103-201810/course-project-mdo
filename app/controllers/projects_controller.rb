@@ -14,7 +14,7 @@ class ProjectsController < ApplicationController
         promises: Promise.where(:project_id => params[:id]),
         user_id: nil,
         disabled: "disabled",
-        wishlist: current_user.in_wishlist(params[:id])
+        wishlist: user_signed_in? ? current_user.in_wishlist(params[:id]) : "none"
 
     }
 

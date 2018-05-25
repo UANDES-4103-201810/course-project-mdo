@@ -33,7 +33,7 @@
 
   <div class="form-group">
     <%= f.label :image %>
-    <%= f.text_field :image, id: :user_image, class: "form-control" %>
+    <%= f.file_field :image, id: :user_image, direct_upload: true %>
   </div>
 
   <div class="form-group">
