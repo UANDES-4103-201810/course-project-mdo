@@ -30,7 +30,7 @@ function clickDonate() {
 function clickOutstanding() {
     let project_input = document.getElementById("project_id");
     let outstanding_button = document.getElementById("outstanding_button");
-    let user_input = document.getElementById("user_id");
+    let user_input = document.getElementById("owner_id");
 
     let user_id = user_input.value;
     let project_id = project_input.value;
