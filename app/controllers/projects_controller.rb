@@ -4,8 +4,7 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.all
-    @categories = Category.all
+    @projects = Project.by_category(params[:category])
   end
 
   # GET /projects/1

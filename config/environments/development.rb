@@ -1,6 +1,9 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  # Defining Host
+  Rails.application.routes.default_url_options[:host] = '0.0.0.0:3000'
+
   # Storage config
   config.active_storage.service = :local
 
