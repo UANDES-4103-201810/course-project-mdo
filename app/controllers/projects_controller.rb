@@ -57,6 +57,7 @@ class ProjectsController < ApplicationController
   # PATCH/PUT /projects/1.json
   def update
     respond_to do |format|
+      #project_params[:user_id] = User.find(project_params[:user_id])
       if @project.update(project_params)
         format.html { redirect_to @project, notice: 'Project was successfully updated.' }
         format.json { render :show, status: :ok, location: @project }
@@ -85,6 +86,6 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:outstanding, :approved, :deleted, :title, :description, :ammount, :days_to_go, :picture, :video, :descriptive_page, :delivery_date, :category_id)
+      params.require(:project).permit(:outstanding, :approved, :deleted, :title, :description, :ammount, :days_to_go, :picture, :video, :descriptive_page, :delivery_date, :category_id, :user_id)
     end
 end
