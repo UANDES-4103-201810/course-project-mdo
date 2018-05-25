@@ -211,3 +211,36 @@ function updateShownProjects(projects){
     }
 }
 
+function addPromise(project_id){
+    let price_input = document.getElementById("promise_price");
+    let description_input = document.getElementById("promise_description");
+    let date_input = document.getElementById("promise_release_date");
+    let quantity_input = document.getElementById("promise_quantity");
+
+    let price = price_input.value;
+    let description = description_input.value;
+    let release_date = date_input.value;
+    let quantity = quantity_input.value;
+
+
+    $.ajax({
+        type: "POST",
+        url: "/promises.json",
+        data: {
+            promise: {
+                project_id: project_id,
+                price: price,
+                description: description,
+                release_date: release_date,
+                quantity:quantity,
+                authenticity_token: window._token
+            }
+        },
+        dataType: "json",
+        success: function(){
+            sendNotice("Promise created successfully");
+            getFundedAmount(project_id);
+        }
+    });
+}
+
