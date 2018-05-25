@@ -8,6 +8,7 @@
 
 users_list = [
     [
+        true,
         "aa@aa.aa",
         "123456789Ps",
         "Aaaaa",
@@ -18,6 +19,7 @@ users_list = [
         'user_1.jpeg'
     ],
     [
+        false,
         "bb@aa.aa",
         "123456789Ps",
         "Aaaaa",
@@ -31,8 +33,9 @@ users_list = [
 
 users = []
 
-users_list.each do |email, password, name, last_name, address, birth_date, img_path, img_name|
+users_list.each do |admin, email, password, name, last_name, address, birth_date, img_path, img_name|
   users << User.create(
+    admin: admin,
     email: email,
     password: password,
     name: name,
