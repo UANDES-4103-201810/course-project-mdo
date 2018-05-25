@@ -24,10 +24,14 @@
       <div class="col-md-4">
         <button class="btn" id="wishlist_button" onclick="clickWishlist();" value="<%= @info[:wishlist] %>" <%= @info[:disabled] %>></button>
       </div>
-      <% if current_user.admin %>
-      <div class="col-md-4">
-        <button class="btn" id="outstanding_button" onclick="clickOutstanding();" value="<%= !@project.outstanding  %>"<%= @info[:disabled] %>></button>
-      </div>
+      <% if user_signed_in? %>
+        <% if current_user.admin %>
+          <div class="col-md-4">
+            <button class="btn" id="outstanding_button" onclick="clickOutstanding();" value="<%= !@project.outstanding  %>"<%= @info[:disabled] %>></button>
+            <td><%= link_to 'Edit', edit_project_path(@project), class:"btn btn-info" %></td>
+            <td><%= link_to 'Destroy', @project, method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger" %></td>
+          </div>
+        <% end %>
       <% end %>
     </div>
   </div>
@@ -39,15 +43,17 @@
       <input type="number" id="donation_input" class="form-control" value="1" min="1">
       <button class="btn btn-success" id="donation_button" onclick="clickDonate();" <%= @info[:disabled] %>>Donate</button>
     </div>
-    <h3>Promises
-    </h3>
 
+    <div class="row">
+      <div class="col-md-12">
+        <h3>Promises</h3>
+        <% if @info[:user_id] == @project.user_id %>
+          <button href="" class="btn btn-success" data-toggle="modal" data-target="#newPromiseModal">Add New Promise</button>
+        <% end %>
+      </div>
 
-
-    <div class="text-center">
-      <button href="" class="btn btn-success" data-toggle="modal" data-target="#newPromiseModal">Add New Promise</button>
     </div>
-
+    <br/>
 
 
     <% for p in @info[:promises] do %>
@@ -69,6 +75,7 @@
   </div>
 </div>
 <input type="hidden" id="project_id" value="<%= @project.id %>">
+<input type="hidden" id="owner_id" value="<%= @project.user_id %>">
 <input type="hidden" id="user_id" value="<%= @info[:user_id] %>">
 
 
