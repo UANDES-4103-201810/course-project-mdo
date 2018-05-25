@@ -1,9 +1,6 @@
 <div class="row">
   <div class="col-md-6">
     <h1><%= @project.title %></h1>
-    <% if current_user.admin %>
-      Outstanding Project <input type="checkbox" id="outstanding" onclick="setOutstandingProject(<%=project.id%>)">
-    <% end %>
     <%= image_tag @project.picture.attached? ? @project.picture : "", class: "img img-responsive" %>
     <br/>
     <p>
@@ -27,6 +24,11 @@
       <div class="col-md-4">
         <button class="btn btn-info" id="wishlist_button" onclick="clickWishlist();" value="<%= @info[:wishlist] %>" <%= @info[:disabled] %>>Add to Wishlist</button>
       </div>
+      <% if current_user.admin %>
+      <div class="col-md-4">
+        <button class="btn btn-info" id="outstanding_button" onclick="clickOutstanding();" value="<%= @project.outstanding %>"<%= @info[:disabled] %>>Mark as outstanding</button>
+      </div>
+      <% end %>
     </div>
   </div>
   <div class="col-md-6">
@@ -74,6 +76,19 @@
             modifyWishlistButton(wishlist_id, wishlist_button, 'btn btn-info', 'Add to Wishlist');
         } else {
             modifyWishlistButton(wishlist_id, wishlist_button, 'btn btn-danger', 'Remove from Wishlist');
+        }
+    });
+</script>
+
+<script type="application/javascript">
+    $(document).ready(function () {
+        let outstanding_button = document.getElementById("outstanding_button");
+        let outstanding_value = outstanding_button.value;
+
+        if (outstanding_value === "none") {
+            modifyOutstandigButton(outstanding_value, outstanding_button, 'btn btn-info', 'Mark as Outstanding Project');
+        } else {
+            modifyOutstandigButton(outstanding_value, outstanding_button, 'btn btn-danger', 'Remove from Outstanding Projects');
         }
     });
 </script>

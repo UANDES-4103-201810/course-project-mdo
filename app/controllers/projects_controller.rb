@@ -15,6 +15,7 @@ class ProjectsController < ApplicationController
         user_id: nil,
         disabled: "disabled",
         wishlist: current_user.in_wishlist(params[:id])
+
     }
 
     if user_signed_in?

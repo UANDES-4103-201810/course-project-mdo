@@ -27,6 +27,62 @@ function clickDonate() {
     });
 }
 
+function clickOutstanding() {
+    let project_input = document.getElementById("project_id");
+    let outstanding_button = document.getElementById("outstanding_button");
+
+    let project_id = project_input.value;
+    let outstanding_value = outstanding_button.value;
+
+    if (outstanding_value === "true"){
+        markAsOutstanding(project_id, outstanding_value, outstanding_button);
+    } else {
+        unmarkAsOutstanding(project_id, outstanding_value, outstanding_button);
+    }
+
+}
+function markAsOutstanding(project_id, outstanding_value, outstanding_button) {
+    $.ajax({
+        type: "POST",
+        url: "/projects/1.json",
+        data: {"_method":"update",
+            project: {
+                outstanding: outstanding_value,
+                authenticity_token: window._token
+            }
+        },
+        dataType: "json",
+        success: function(data){
+            let $response=$(data);
+            let outstanding_value = $response[0].id;
+            modifyOutstandigButton(outstanding_value, outstanding_button, 'btn btn-danger', 'Mark as Outstanding');
+            sendNotice("Change saved");
+        }
+    });
+}
+function unmarkAsOutstanding(project_id, outstanding_value, outstanding_button) {
+    $.ajax({
+        type: "POST",
+        url: "/projects/1.json",
+        dataType: "json",
+        data: {"_method":"update",
+            project: {
+                outstanding: outstanding_value,
+                authenticity_token: window._token
+            }},
+        success: function(){
+            modifyOutstandigButton(outstanding_value, outstanding_button, 'btn btn-danger', 'Unmark as Outstanding');
+            sendNotice("Change saved");
+        }
+    });
+}
+
+function modifyOutstandigButton(outstanding_value, outstanding_button, class_type, text) {
+    outstanding_button.value = outstanding_value;
+    outstanding_button.setAttribute('class', class_type);
+    outstanding_button.innerHTML = text;
+}
+
 function clickWishlist() {
     let project_input = document.getElementById("project_id");
     let user_input = document.getElementById("user_id");
@@ -83,6 +139,7 @@ function modifyWishlistButton(wishlist_id, wishlist_button, class_type, text) {
     wishlist_button.setAttribute('class', class_type);
     wishlist_button.innerHTML = text;
 }
+
 
 function buyPromise(promise_id) {
     let user_input = document.getElementById("user_id");
