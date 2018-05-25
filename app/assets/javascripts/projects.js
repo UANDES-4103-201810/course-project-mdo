@@ -127,3 +127,8 @@ function setFundedAmount(amount) {
     let amount_text = document.getElementById("funded_amount");
     amount_text.innerHTML = "<strong>Funded so far:</strong> " + amount;
 }
+
+function categoryFilter() {
+    var id_category_selected = document.getElementById("selected_category")
+
+}
