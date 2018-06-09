@@ -12,8 +12,12 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    wishlist = []
+    if user_signed_in?
+      wishlist = current_user.my_wishlist
+    end
     @info = {
-        wishlist: current_user.my_wishlist,
+        wishlist: wishlist,
         projects: Project.where(:user_id => params[:id])
     }
 
