@@ -47,7 +47,7 @@ function setOutstandingValue(project_id, outstanding_value, outstanding_button, 
         button_class = "btn btn-danger";
         button_text = "Remove from Outstanding Projects";
     } else {
-        button_class = "btn btn-success";
+        button_class = "btn btn-info";
         button_text = "Mark as outstanding";
     }
 

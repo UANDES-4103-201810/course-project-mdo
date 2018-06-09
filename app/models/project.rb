@@ -7,6 +7,10 @@ class Project < ApplicationRecord
 
   has_one_attached :picture
 
+  def markdown
+    Redcarpet::Markdown.new(Redcarpet::Render::HTML)
+  end
+
   #validates :ammount, :days_to_go, numericality: {greater_than: 0}
   #validates :ammount, :days_to_go, :title, :description, :delivery_date, :user_id, :category_id, presence: true
 

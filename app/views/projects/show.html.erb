@@ -4,7 +4,7 @@
     <%= image_tag @project.picture.attached? ? @project.picture : "", class: "img img-responsive" %>
     <br/>
     <p>
-      <%= @project.description %>
+      <%= markdown(@project.description) %>
     </p>
     <div class="row">
       <div class="col-md-8">
@@ -27,7 +27,7 @@
       <% if user_signed_in? %>
         <% if current_user.admin %>
           <div class="col-md-4">
-            <button class="btn" id="outstanding_button" onclick="clickOutstanding();" value="<%= !@project.outstanding  %>"<%= @info[:disabled] %>></button>
+            <button class="btn" id="outstanding_button" onclick="clickOutstanding();" value="<%= @project.outstanding  %>"<%= @info[:disabled] %>></button>
             <td><%= link_to 'Edit', edit_project_path(@project), class:"btn btn-info" %></td>
             <td><%= link_to 'Destroy', @project, method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger" %></td>
           </div>

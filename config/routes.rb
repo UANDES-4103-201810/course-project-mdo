@@ -10,4 +10,7 @@ Rails.application.routes.draw do
 
   root to: 'default#home'
   resources :users
+
 end
+
+
