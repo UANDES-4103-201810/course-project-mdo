@@ -15,7 +15,7 @@ class Project < ApplicationRecord
   #validates :ammount, :days_to_go, :title, :description, :delivery_date, :user_id, :category_id, presence: true
 
   def funded_amount
-    donations = Fund.where(:project_id => self.id).sum(:money)
+    donations = Fund.where(:project_id => self.id, :approved => true).sum(:money)
     promises = 0
     Promise.where(:project_id => self.id).each do |p|
       promises += p.amount_by_promise

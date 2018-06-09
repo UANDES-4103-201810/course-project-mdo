@@ -28,7 +28,7 @@ class BuysController < ApplicationController
 
     respond_to do |format|
       if @buy.save
-        UserMailer.with(user: current_user, promise: Promise.find(@buy.promise_id)).buy_promise.deliver_later
+        UserMailer.with(user: current_user, promise: Promise.find(@buy.promise_id), id: @buy.id).buy_promise.deliver_later
         format.html { redirect_to @buy, notice: 'Buy was successfully created.' }
         format.json { render :show, status: :created, location: @buy }
       else

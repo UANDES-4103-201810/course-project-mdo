@@ -35,6 +35,38 @@ class User < ApplicationRecord
     Wishlist.where(:user_id => self.id)
   end
 
+  def funded
+    Project.where(:id => Fund.where(:user_id => self.id, :approved => true)).to_a
+  end
+
+  def bought
+    a = []
+    Buy.where(:user_id => self.id, :approved => true).each do |p|
+      b = Project.find(Promise.find(p.promise_id).project_id)
+      unless a.include?(b)
+        a << b
+      end
+    end
+    a
+  end
+
+  def all_funded
+    a = self.funded
+    b = self.bought
+    c = []
+    a.each do |p|
+      unless c.include?(p)
+        c << p
+      end
+    end
+    b.each do |p|
+      unless c.include?(p)
+        c << p
+      end
+    end
+    c
+  end
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.provider = auth.provider

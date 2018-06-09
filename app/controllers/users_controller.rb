@@ -12,13 +12,23 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    fund = params[:fund]
+    buy = params[:buy]
+    unless fund.nil?
+      Fund.find(fund).update(:approved => true)
+    end
+    unless buy.nil?
+      Buy.find(buy).update(:approved => true)
+    end
+
     wishlist = []
     if user_signed_in?
       wishlist = current_user.my_wishlist
     end
     @info = {
         wishlist: wishlist,
-        projects: Project.where(:user_id => params[:id])
+        projects: Project.where(:user_id => params[:id]),
+        funded: current_user.all_funded
     }
 
   end

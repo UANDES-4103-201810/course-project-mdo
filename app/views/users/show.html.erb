@@ -30,7 +30,7 @@
       <h3><%= link_to w.project.title, w.project %></h3>
     <% end %>
     <h2>Funded Projects</h2>
-    <% for p in @info[:projects] do %>
+    <% for p in @info[:funded] do %>
       <h3><%= link_to p.title, p %></h3>
     <% end %>
   </div>

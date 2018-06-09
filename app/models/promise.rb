@@ -6,6 +6,6 @@ class Promise < ApplicationRecord
   validates :project_id, :quantity, :price, :release_date, :description, presence: true
 
   def amount_by_promise
-    Buy.where(:promise_id => self.id).count * self.price
+    Buy.where(:promise_id => self.id, :approved => true).count * self.price
   end
 end
