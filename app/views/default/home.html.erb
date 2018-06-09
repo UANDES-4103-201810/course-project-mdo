@@ -4,7 +4,7 @@
     <div class="col-md-4">
       <%= image_tag p.picture.attached? ? p.picture : "", class: "img img-responsive" %>
       <h2><%= link_to p.title, p %></h2>
-      <p><%= p.description %></p>
+      <p><%= markdown(p.description) %></p>
     </div>
   <% end %>
 </div>
