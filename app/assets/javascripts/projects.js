@@ -180,19 +180,31 @@ function setFundedAmount(amount) {
     amount_text.innerHTML = "<strong>Funded so far:</strong> " + amount;
 }
 
-function categoryFilter() {
-    let category_select = document.getElementById("selected_category");
-    let selected_category_index = category_select.selectedIndex;
-    let category_id = category_select.options[selected_category_index].value;
+function filterChange() {
+    let project_name = nameFilter();
+    let category_id = categoryFilter();
 
     $.ajax({
         type: "GET",
-        url: "/projects.json?category="+category_id.toString(),
+        url: "/projects.json?category="+category_id.toString()+"&name="+project_name.toString(),
         success: function(data){
             let $response=$(data);
             updateShownProjects($response)
         }
     });
+}
+
+function nameFilter() {
+    let name_input = document.getElementById("search");
+
+    return name_input.value;
+}
+
+function categoryFilter() {
+    let category_select = document.getElementById("selected_category");
+    let selected_category_index = category_select.selectedIndex;
+
+    return category_select.options[selected_category_index].value;
 }
 
 function updateShownProjects(projects){

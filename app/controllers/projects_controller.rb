@@ -4,7 +4,14 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.by_category(params[:category])
+    name = ""
+    unless params[:name] == nil
+      name = params[:name]
+    end
+
+    expression = "%" + name + "%"
+
+    @projects = Project.by_category(params[:category]).where("title LIKE ?", expression)
   end
 
   # GET /projects/1

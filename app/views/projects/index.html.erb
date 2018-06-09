@@ -1,8 +1,11 @@
 <h1>Projects</h1>
 
 <div class="row">
-  <div class="col-md-8">
-    <%= select_tag "selected_category", options_from_collection_for_select(Category.all, "id", "name"), include_blank: "All", class: "form-control", onchange: "categoryFilter();" %>
+  <div class="col-md-6">
+    <input type="text" class="form-control" placeholder="Search" id="search" oninput="filterChange();">
+  </div>
+  <div class="col-md-2">
+    <%= select_tag "selected_category", options_from_collection_for_select(Category.all, "id", "name"), include_blank: "All", class: "form-control", onchange: "filterChange();" %>
   </div>
   <div class="col-md-4">
     <% if user_signed_in? %>
