@@ -28,6 +28,7 @@ class FundsController < ApplicationController
 
     respond_to do |format|
       if @fund.save
+        UserMailer.with(user: current_user, project: Project.find(@fund.project_id)).fund_project.deliver_later
         format.html { redirect_to @fund, notice: 'Fund was successfully created.' }
         format.json { render :show, status: :created, location: @fund }
       else
