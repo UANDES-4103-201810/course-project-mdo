@@ -18,7 +18,7 @@
       <strong>Address:</strong>
       <%= @user.address %>
     </p>
-    <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-default" %>
+    <%= link_to 'Edit Profile', edit_user_registration_path, class: "btn btn-default" %>
     <h2>My Projects</h2>
     <% for p in @info[:projects] do %>
       <h3><%= link_to p.title, p %></h3>
