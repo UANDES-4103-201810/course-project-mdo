@@ -13,7 +13,6 @@ function clickDonate() {
         data: {
             fund: {
                 money: donation_value,
-                approved: true,
                 user_id: user_id,
                 project_id: project_id,
                 authenticity_token: window._token
@@ -149,7 +148,6 @@ function buyPromise(promise_id) {
         url: "/buys.json",
         data: {
             buy: {
-                approved: true,
                 user_id: user_id,
                 promise_id: promise_id,
                 authenticity_token: window._token
